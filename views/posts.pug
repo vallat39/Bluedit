@@ -1,0 +1,15 @@
+extends layout.pug
+block content
+  center
+    h1(class='shape') Posts:
+  each post in posts
+    div(class='shape')
+      h3 Name: #{post.name}
+      p(id = post._id) Message: #{post.message} | Date: #{post.date} | Upvotes: 
+        span(class='upvotes-count') #{post.upvotes}
+        | | Downvotes: 
+        span(class='downvotes-count') #{post.downvotes}
+      button(type='button', class='upvote', data-id=post._id)
+      button(type='button', class='downvote', data-id=post._id)
+      input(type='text', placeholder='Type Comment', name='comment')
+      button(type='submit', class='comment') Comment

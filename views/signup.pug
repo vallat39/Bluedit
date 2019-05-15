@@ -1,0 +1,24 @@
+extends layout.pug
+block content
+  .container(class='shape')
+    h2 Sign Up
+    p Create an account
+    form#signupForm(action='/signup', method='POST', style='border:1px solid #ccc')
+      label(for='email')
+        p Email
+      input(type='text', placeholder='Enter Email', name='email', required='')
+      label(for='username')
+        p Username
+      input(type='text', placeholder='Enter Username', name='username', required='')
+      label(for='password')
+        p Password
+      input(type='password', placeholder='Enter Password', name='password', required='')
+      label(for='confpass')
+        p Repeat Password
+      input(type='password', placeholder='Confirm Password', name='confpass', required='')
+      p
+        | By creating an account you agree to our 
+        a(href='#', style='color:blue') Terms and Privacy
+        | .
+      .clearfix
+        button.signupbtn(type='submit') Sign Up
