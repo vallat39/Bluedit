@@ -36,7 +36,7 @@ exports.upvote = function(req, res) {
     post.save(function(error, postAfterSave) {
       if (error) {
         console.log(error)
-        res.json({error: "We couldn't save the upvote"})
+        res.json({error: "Can't save the upvote"})
         return
       }
       res.json({success: 'Post upvoted successfully', upvotes: postAfterSave.upvotes})
@@ -53,7 +53,7 @@ exports.downvote = function(req, res) {
     }
 
     if (post === null) {
-      console.log("Coudn't find the post")
+      console.log("Can't find the post")
       return
     }
 
@@ -65,6 +65,31 @@ exports.downvote = function(req, res) {
         return
       }
       res.json({success: 'Post downvoted successfully', downvotes: postAfterSave.downvotes})
+    })
+  })
+}
+
+exports.comment = function(req, res) {
+  console.log('Someone commented on the post with id = ', req.params.id)
+
+  Post.findById(req.params.id, function (err, post) {
+    if (err) {
+      console.log(err)
+    }
+
+    if (post === null) {
+      console.log("Can't find the post")
+      return
+    }
+
+    post. comment = req.body.comment
+    post.save(function(error, postAfterSave) {
+      if (error) {
+        console.log(error)
+        res.json({error: 'Error commenting'})
+        return
+      }
+      res.json({success: 'Comment posted successfully', comments: postAfterSave})
     })
   })
 }

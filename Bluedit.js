@@ -41,6 +41,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`))
 
 app.get('/upvote-post/:id', isLoggedIn, ControllerPosts.upvote)
 app.get('/downvote-post/:id', isLoggedIn, ControllerPosts.downvote)
+app.post('/comment-post/:id', isLoggedIn, ControllerPosts.comment)
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);

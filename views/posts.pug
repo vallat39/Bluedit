@@ -11,5 +11,8 @@ block content
         span(class='downvotes-count') #{post.downvotes}
       button(type='button', class='upvote', data-id=post._id)
       button(type='button', class='downvote', data-id=post._id)
-      input(type='text', placeholder='Type Comment', name='comment')
+      input(type='text', placeholder='Type Comment', name='comment') // give id
       button(type='submit', class='comment') Comment
+      div
+        each comment in post.comments
+          p(class='comment', id = post._id) Comment: #{post.comment}

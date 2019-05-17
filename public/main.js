@@ -48,4 +48,21 @@ $( document ).ready(function() {
       $(`p#${postId} > span.downvotes-count`)[0].innerText = ' ' + response.downvotes
     })
   })
+
+  $('.comment').on('click', function(e) {
+    console.log($(e.target)[0])
+    const postId = $(e.target)[0].dataset.id
+    console.log(postId)
+    $.ajax({
+      method: 'POST',
+      url:`/comment-post/${postId}`,
+      data: {comment: }
+    })
+    .done(function(response) {
+      console.log(response)
+
+    })
+
+  })
+
 })
